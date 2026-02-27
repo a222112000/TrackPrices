@@ -1,4 +1,4 @@
-package com.alselwi.trackprices.ui.theme
+package com.alselwi.trackprices.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
