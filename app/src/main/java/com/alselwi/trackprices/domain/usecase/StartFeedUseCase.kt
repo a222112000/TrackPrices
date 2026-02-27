@@ -1,0 +1,9 @@
+package com.alselwi.trackprices.domain.usecase
+
+import com.alselwi.trackprices.domain.repository.StockRepository
+
+class StartFeedUseCase(
+    private val repository: StockRepository
+) {
+    operator fun invoke() = repository.start()
+}
