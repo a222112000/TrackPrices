@@ -1,5 +1,8 @@
 package com.alselwi.trackprices.data.repository
 
+import com.alselwi.trackprices.common.Constants.DELAY_2000
+import com.alselwi.trackprices.common.Constants.VALUE_100
+import com.alselwi.trackprices.common.Constants.VALUE_800
 import com.alselwi.trackprices.data.mapper.StockMapper
 import com.alselwi.trackprices.data.model.StockDto
 import com.alselwi.trackprices.data.remote.WebSocketManager
@@ -39,11 +42,11 @@ class StockRepositoryImpl(
         job = CoroutineScope(Dispatchers.IO).launch {
             while (isActive){
                 symbols.forEach { symbol->
-                    val newPrice = Random.nextDouble(100.0, 800.0)
+                    val newPrice = Random.nextDouble(VALUE_100, VALUE_800)
                     val message = "$symbol:$newPrice"
                     webSocketManager.send(message)
                 }
-                delay(2000)
+                delay(DELAY_2000)
             }
         }
         CoroutineScope(Dispatchers.IO).launch {
