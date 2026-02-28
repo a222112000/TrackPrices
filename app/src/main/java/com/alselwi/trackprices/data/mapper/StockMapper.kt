@@ -8,12 +8,11 @@ object StockMapper {
         dto: StockDto,
         oldPrice: Double?
     ): Stock {
-        val change = if(oldPrice != null) dto.price else 0.00
+        val isUP = oldPrice?.let { dto.price > it } ?: true
         return Stock(
             symbol = dto.symbol,
             price = dto.price,
-            change = change,
-            isUp = change >= 0
+            isUp = isUP
         )
     }
 }
