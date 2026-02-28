@@ -46,7 +46,7 @@ fun FeedScreen(
         TopAppBar(title = { Text("Real-Time Prices") },
             navigationIcon = {
                 val connectedIcon = "\uD83D\uDFE2"
-                val disconnectedIcon = "\uD83D\uDFE2"
+                val disconnectedIcon = "\uD83D\uDD34"
                 Text(if(state.isConnected) connectedIcon else disconnectedIcon)},
             actions = {
                 TextButton(onClick = {

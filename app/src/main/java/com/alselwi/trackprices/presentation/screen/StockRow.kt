@@ -37,7 +37,7 @@ fun StockRow(
             if(stock.isUp)
                 Color(0x332E7D32)
             else
-                Color(0x332E7D32),
+                Color(0x33C62828),
             animationSpec = tween(300)
         )
         delay(500)
@@ -66,9 +66,9 @@ fun StockRow(
                 Icons.Default.KeyboardArrowDown,
                 contentDescription = null,
                 tint = if(stock.isUp)
-                Color(0x33C62828)
-                else
                     Color(0xFF2E7D32)
+                else
+                    Color(0x33C62828)
                 )
         }
     }
