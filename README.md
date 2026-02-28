@@ -5,4 +5,11 @@
 
 #Run ./gradlew detekt
 This will check all the classed for Magic numbers, Lints, and other pipeline related failings
+#Clean architecture 
+#Websocket
+#Stock market tracking mock up and down
+#Coroutines
+#Navigation
+#Jetpack compose
+
 
