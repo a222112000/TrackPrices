@@ -9,19 +9,19 @@ import androidx.navigation.navArgument
 import com.alselwi.trackprices.presentation.navigation.NavRoutes
 
 @Composable
-fun PriceTrackerApp(){
+fun priceTrackerApp(){
     val navController = rememberNavController()
     NavHost(navController = navController,
         startDestination = NavRoutes.Feed.route){
         composable(route = NavRoutes.Feed.route){
-            FeedScreen(navController = navController)
+            feedScreen(navController = navController)
         }
         composable(route = NavRoutes.Details.route,
             arguments = listOf(navArgument(NavRoutes.Details.SYMBOL){
                 type = NavType.StringType
             })){ backStackEntry ->
             val symbol = backStackEntry.arguments?.getString(NavRoutes.Details.SYMBOL) ?: ""
-            DetailsScreen(symbol = symbol)
+            detailsScreen(symbol = symbol)
         }
     }
 }

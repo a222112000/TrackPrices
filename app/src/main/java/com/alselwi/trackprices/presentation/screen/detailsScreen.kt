@@ -28,7 +28,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailsScreen(
+fun detailsScreen(
     symbol: String,
     viewModel: TrackPriceViewModel = koinViewModel()
 ){
@@ -51,7 +51,7 @@ fun DetailsScreen(
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = String.format("%.2f", stock.price),
+                        text = String.format(java.util.Locale.getDefault(),"%.2f", stock.price),
                         style = MaterialTheme.typography.headlineLarge,
                         color = if (stock.isUp) Color.Green else Color.Red
                     )

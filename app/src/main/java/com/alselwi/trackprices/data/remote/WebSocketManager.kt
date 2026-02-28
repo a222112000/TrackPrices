@@ -1,5 +1,6 @@
 package com.alselwi.trackprices.data.remote
 
+import com.alselwi.trackprices.common.Constants.CODE_1000
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -56,7 +57,7 @@ class WebSocketManager {
     }
 
     fun disconnect(){
-        webSocket?.close(1000,"Closed")
+        webSocket?.close(CODE_1000,"Closed")
         _connected.value = false
     }
 }

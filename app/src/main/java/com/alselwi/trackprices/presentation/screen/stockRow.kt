@@ -23,11 +23,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.alselwi.trackprices.common.Constants.DELAY_500
+import com.alselwi.trackprices.common.Constants.DURATION_300
+import com.alselwi.trackprices.common.Constants.DURATION_600
+import com.alselwi.trackprices.common.Constants.GREEN
+import com.alselwi.trackprices.common.Constants.LIGHT_GREEN
+import com.alselwi.trackprices.common.Constants.LIGHT_RED
 import com.alselwi.trackprices.domain.entity.Stock
 import kotlinx.coroutines.delay
+import java.util.Locale
 
 @Composable
-fun StockRow(
+fun stockRow(
     stock: Stock,
     onClick:()-> Unit
 ){
@@ -35,14 +42,14 @@ fun StockRow(
     LaunchedEffect(stock.price) {
         flashColor.animateTo(
             if(stock.isUp)
-                Color(0x332E7D32)
+                Color(GREEN)
             else
-                Color(0x33C62828),
-            animationSpec = tween(300)
+                Color(LIGHT_RED),
+            animationSpec = tween(DURATION_300)
         )
-        delay(500)
+        delay(DELAY_500)
         flashColor.animateTo(Color.Transparent,
-            animationSpec = tween(600))
+            animationSpec = tween(DURATION_600))
     }
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -57,7 +64,7 @@ fun StockRow(
             style = MaterialTheme.typography.titleMedium
         )
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(text = String.format("%.2f", stock.price),
+            Text(text = String.format(Locale.getDefault(),"%.2f", stock.price),
                 style = MaterialTheme.typography.bodyLarge)
             Spacer(modifier = Modifier.width(8.dp))
             Icon(imageVector = if (stock.isUp)
@@ -66,9 +73,9 @@ fun StockRow(
                 Icons.Default.KeyboardArrowDown,
                 contentDescription = null,
                 tint = if(stock.isUp)
-                    Color(0xFF2E7D32)
+                    Color(LIGHT_GREEN)
                 else
-                    Color(0x33C62828)
+                    Color(LIGHT_RED)
                 )
         }
     }

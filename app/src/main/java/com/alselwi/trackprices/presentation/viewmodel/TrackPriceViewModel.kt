@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
+@Suppress("TooGenericExceptionCaught")
 class TrackPriceViewModel(
     private val observeStocks: ObserveStockUseCase,
     private val observeConnection: ObserveConnectionUseCase,
@@ -37,7 +38,7 @@ class TrackPriceViewModel(
                 setState { copy(isRunning = !running, isLoading = false) }
             }catch (e: Exception){
                 setState { copy(isLoading = false) }
-                setEffect { FeedContract.Effect.ShowError("Error Occurred") }
+                setEffect { FeedContract.Effect.ShowError("Error Occurred $e") }
             }
         }
     }

@@ -4,25 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.alselwi.trackprices.di.appModule
-import com.alselwi.trackprices.presentation.screen.PriceTrackerApp
-import com.alselwi.trackprices.presentation.theme.TrackPricesTheme
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
+import com.alselwi.trackprices.presentation.screen.priceTrackerApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-          PriceTrackerApp()
+          priceTrackerApp()
         }
     }
 }
