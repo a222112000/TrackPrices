@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import kotlin.random.Random
 
 class StockRepositoryImpl(
@@ -33,6 +34,7 @@ class StockRepositoryImpl(
     private var job: Job? = null
     private val priceMap = mutableMapOf<String, Double>()
     override fun start() {
+        Timber.d("xxxxThis is called")
         webSocketManager.connect()
         job = CoroutineScope(Dispatchers.IO).launch {
             while (isActive){
@@ -46,6 +48,7 @@ class StockRepositoryImpl(
         }
         CoroutineScope(Dispatchers.IO).launch {
             webSocketManager.incoming.collect { message->
+                Timber.d("xxxxThis is called $message")
                 val parts = message.split(":")
                 if(parts.size == 2){
                     val symbol = parts[0]
